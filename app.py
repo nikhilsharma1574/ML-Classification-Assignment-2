@@ -1,21 +1,12 @@
-
-import streamlit as st
-import pandas as pd
-import numpy as np
-import sys
-import importlib.util
-
-import streamlit as st
-
-st.write("Python version:", sys.version)
-st.write("Python executable:", sys.executable)
-st.write("Joblib location:", importlib.util.find_spec("joblib"))
 import json
+import sys
 from pathlib import Path
 
+import joblib
 import matplotlib.pyplot as plt
+import pandas as pd
 import seaborn as sns
-
+import streamlit as st
 from sklearn.metrics import (
     accuracy_score,
     roc_auc_score,
@@ -24,14 +15,15 @@ from sklearn.metrics import (
     f1_score,
     matthews_corrcoef,
     confusion_matrix,
-    classification_report
+    classification_report,
 )
+import importlib.util
 
 # Page configuration
 st.set_page_config(
     page_title="Bank Marketing ML Dashboard",
     page_icon="🧠",
-    layout="wide"
+    layout="wide",
 )
 
 BASE_DIR = Path(__file__).parent
@@ -307,3 +299,7 @@ st.caption(
     "All models are loaded from saved Joblib files. "
     "No model retraining is performed in this application."
 )
+
+st.write("Python version:", sys.version)
+st.write("Python executable:", sys.executable)
+st.write("Joblib location:", importlib.util.find_spec("joblib"))
